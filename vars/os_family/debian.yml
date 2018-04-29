@@ -1,0 +1,34 @@
+---
+
+# Debian OS family variables
+
+_netdata_dependencies:
+  - name: 'autoconf'
+  - name: 'autoconf-archive'
+  - name: 'autogen'
+  - name: 'automake'
+  - name: 'curl'
+  - name: 'gcc'
+  - name: 'git'
+  - name: 'libmnl-dev'
+  - name: 'make'
+  - name: 'pkg-config'
+  - name: 'uuid-dev'
+  - name: 'zlib1g-dev'
+
+_netdata_plugins_dependencies:
+  - name: 'bash'
+  - name: 'curl'
+  - name: 'iproute'
+  - name: 'python'
+  - name: 'python-yaml'
+  - name: 'python-beanstalkc'
+  - name: 'python-dnspython'
+  - name: 'python-ipaddress'
+  - name: 'python-mysqldb'
+  - name: 'python-psycopg2'
+  - name: 'python-pymongo'
+  - name: 'nodejs'
+  - name: 'lm-sensors'
+  - name: 'libmnl0'
+  - name: 'netcat'

@@ -41,6 +41,31 @@ $ tox
 ``` yaml
 ```
 
+## How ...
+
+### ... manage main configuration
+
+> You can manage main configuration file using ini format
+
+``` yaml
+netdata_main_configuration_items:
+  - section: 'foobar'
+    option: 'foo'
+    value: 'bar'
+```
+
+### ... manage plugins configuration
+
+> To avoid hard regex or errors, when you want a specific configuration for a plugin,
+> you need to manage all its configuration using *content* key
+
+``` yaml
+netdata_plugins_configuration_items:
+  - path: 'python.d/squid.conf'
+    content:
+      foo: bar
+```
+
 ## Dependencies
 
 None

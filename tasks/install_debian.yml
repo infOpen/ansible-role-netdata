@@ -1,0 +1,9 @@
+---
+
+# Specific Debian family installation tasks
+
+- name: 'INSTALL | APT | Install Debian family dependencies'
+  apt:
+    name: "{{ item.name }}"
+    state: "{{ item.state | default('present') }}"
+  with_items: "{{ netdata_dependencies + netdata_plugins_dependencies}}"

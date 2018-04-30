@@ -1,6 +1,10 @@
 # netdata
 
-[![Build Status](https://travis-ci.org/infOpen/ansible-role-netdata.svg?branch=master)](https://travis-ci.org/infOpen/ansible-role-netdata)
+[![Build Status](https://img.shields.io/travis/infOpen/ansible-role-netdata/master.svg?label=travis_master)](https://travis-ci.org/infOpen/ansible-role-netdata)
+[![Build Status](https://img.shields.io/travis/infOpen/ansible-role-netdata/develop.svg?label=travis_develop)](https://travis-ci.org/infOpen/ansible-role-netdata)
+[![Updates](https://pyup.io/repos/github/infOpen/ansible-role-netdata/shield.svg)](https://pyup.io/repos/github/infOpen/ansible-role-netdata/)
+[![Python 3](https://pyup.io/repos/github/infOpen/ansible-role-netdata/python-3-shield.svg)](https://pyup.io/repos/github/infOpen/ansible-role-netdata/)
+[![Ansible Role](https://img.shields.io/ansible/role/25354.svg)](https://galaxy.ansible.com/infOpen/netdata/)
 
 Install and configure netdata package.
 

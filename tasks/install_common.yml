@@ -1,0 +1,20 @@
+---
+
+# Common Netdata installation tasks
+
+- name: 'INSTALL | Clone Netdata git repository'
+  git:
+    dest: "{{ netdata_git_clone_dir_path }}"
+    repo: "{{ netdata_git_repo_url }}"
+    version: "{{ netdata_git_version }}"
+  notify: 'HANDLER | Restart Netdata'
+  register: '_netdata_task_clone_repository'
+
+
+- name: 'INSTALL | Launch install script'
+  command: "./netdata-installer.sh {{ netdata_install_command_options }}"
+  args:
+    chdir: "{{ netdata_git_clone_dir_path }}"
+  register: '_netdata_task_install_script'
+  notify: 'HANDLER | Restart Netdata'
+  when: "_netdata_task_clone_repository.changed"

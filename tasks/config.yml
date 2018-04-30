@@ -1,0 +1,21 @@
+---
+
+# Netdata configuration tasks
+
+- name: 'CONFIG | Manage main configuration file'
+  ini_file:
+    dest: "{{ netdata_config_dir_path }}/netdata.conf"
+    section: "{{ item.section | default('global') }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+    mode: '0640'
+  notify: 'HANDLER | Restart Netdata'
+  with_items: "{{ netdata_main_configuration_items }}"
+
+
+- name: 'CONFIG | Manage plugins configuration files'
+  template:
+    src: "{{ role_path }}/templates/plugin_config.conf.j2"
+    dest: "{{ netdata_config_dir_path }}/{{ item.path }}"
+  notify: 'HANDLER | Restart Netdata'
+  with_items: "{{ netdata_plugins_configuration_items }}"

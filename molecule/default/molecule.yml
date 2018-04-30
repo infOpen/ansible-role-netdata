@@ -1,0 +1,52 @@
+---
+
+dependency:
+  name: 'galaxy'
+driver:
+  name: 'docker'
+lint:
+  name: 'yamllint'
+platforms:
+  - name: "netdata-docker-jessie"
+    image: 'minimum2scp/systemd-jessie:latest'
+    command: '/sbin/init'
+    cap_add:
+      - 'SYS_PTRACE'
+    privileged: True
+  - name: "netdata-docker-xenial"
+    image: 'solita/ubuntu-systemd:16.04'
+    command: '/sbin/init'
+    cap_add:
+      - 'SYS_PTRACE'
+    privileged: True
+provisioner:
+  name: 'ansible'
+  lint:
+    name: 'ansible-lint'
+  inventory:
+    group_vars:
+      all:
+        netdata_main_configuration_items:
+          - option: 'history'
+            value: 7992
+        netdata_plugins_configuration_items:
+          - path: 'python.d.conf'
+            content:
+              enabled: true
+              apache_cache: false
+              chrony: false
+              example: true
+              gunicorn_log: false
+              go_expvar: false
+              nginx_log: false
+    host_vars: {}
+scenario:
+  name: 'default'
+verifier:
+  name: 'testinfra'
+  additional_files_or_dirs:
+    - '../../tests'
+  lint:
+    name: 'flake8'
+  options:
+    sudo: True

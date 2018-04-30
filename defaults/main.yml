@@ -1,0 +1,25 @@
+---
+
+# Defaults vars file for netdata role
+
+# Packages management
+netdata_dependencies: "{{ _netdata_dependencies }}"
+netdata_plugins_dependencies: "{{ _netdata_plugins_dependencies }}"
+
+# Paths
+netdata_git_clone_dir_path: '/opt/src/netdata'
+netdata_config_dir_path: '/etc/netdata'
+
+# Netdata Git informations
+netdata_git_repo_url: 'https://github.com/firehol/netdata.git'
+netdata_git_version: 'master'
+
+# Netdata service
+netdata_service_name: 'netdata'
+
+# Netdata installation options
+netdata_install_command_options: '--dont-wait'
+
+# Configuration
+netdata_main_configuration_items: []
+netdata_plugins_configuration_items: []

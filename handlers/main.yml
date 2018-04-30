@@ -1,0 +1,9 @@
+---
+
+# Handlers main file for netdata role
+
+- name: 'HANDLER | Restart Netdata'
+  become: True
+  service:
+    name: "{{ netdata_service_name }}"
+    state: 'restarted'

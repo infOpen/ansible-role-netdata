@@ -1,0 +1,35 @@
+---
+
+# Main tasks file for netdata role
+
+- name: 'INIT | Manage variables to use for our target'
+  include: "{{ role_path }}/tasks/manage_variables.yml"
+  tags:
+    - 'role::netdata'
+    - 'role::netdata::config'
+    - 'role::netdata::init'
+    - 'role::netdata::install'
+
+
+- name: 'INSTALL | Manage Netdata OS specific installation tasks'
+  include: "{{ role_path }}/tasks/install_{{ ansible_os_family | lower }}.yml"
+  become: True
+  tags:
+    - 'role::netdata'
+    - 'role::netdata::install'
+
+
+- name: 'INSTALL | Manage Netdata common installation tasks'
+  include: "{{ role_path }}/tasks/install_common.yml"
+  become: True
+  tags:
+    - 'role::netdata'
+    - 'role::netdata::install'
+
+
+- name: 'CONFIG | Manage Netdata configuration tasks'
+  include: "{{ role_path }}/tasks/config.yml"
+  become: True
+  tags:
+    - 'role::netdata'
+    - 'role::netdata::config'
